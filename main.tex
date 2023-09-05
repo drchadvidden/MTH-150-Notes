@@ -1,0 +1,1772 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amssymb,amscd,graphicx}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage[]{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\bibliographystyle{unsrt}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epsfig}  		
+
+
+\renewcommand{\thesection}{}  % toc dispaly
+
+\newcommand{\ds}{\displaystyle}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+
+
+
+
+\title{College Algebra Notes}
+\date
+\Large
+\begin{document}
+\maketitle
+\large
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fun Stuff}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item Google AI experiments: \url{https://experiments.withgoogle.com/ai}
+\item Babylonian tablet: \url{https://www.maa.org/press/periodicals/convergence/the-best-known-old-babylonian-tablet}
+\item Parabola in real world: \url{https://en.wikipedia.org/wiki/Parabola#Parabolas_in_the_physical_world}
+\item Parabolic death ray: \url{https://www.youtube.com/watch?v=TtzRAjW6KO0}
+\item Parabolic solar power: \url{https://www.youtube.com/watch?v=LMWIgwvbrcM}
+\item Robots: \url{https://www.youtube.com/watch?v=mT3vfSQePcs}, riding bike, kicked dog, cheetah, backflip, box hockey stick
+\item Cat or dog: \url{https://www.datasciencecentral.com/profiles/blogs/dogs-vs-cats-image-classification-with-deep-learning-using}
+\item History of logarithm: \url{https://en.wikipedia.org/wiki/History_of_logarithms}
+\item Log transformation: \url{https://en.wikipedia.org/wiki/Data_transformation_(statistics)}
+\item Log plot and population: \url{https://www.google.com/publicdata/explore?ds=kf7tgg1uo9ude_&met_y=population&hl=en&dl=en#!ctype=l&strail=false&bcs=d&nselm=h&met_y=population&scale_y=lin&ind_y=false&rdim=country&idim=state:12000:06000:48000&ifdim=country&hl=en_US&dl=en&ind=false} 
+\item Yelp and NLP: \url{https://github.com/skipgram/modern-nlp-in-python/blob/master/executable/Modern_NLP_in_Python.ipynb} \url{https://www.yelp.com/dataset/challenge}
+\item Polynomials and splines: \url{https://www.youtube.com/watch?v=O0kyDKu8K-k}, Yoda / matlab, \url{https://www.google.com/search?q=pixar+animation+math+spline&espv=2&source=lnms&tbm=isch&sa=X&ved=0ahUKEwj474fQja7TAhUB3YMKHY8nBGYQ_AUIBigB&biw=1527&bih=873#tbm=isch&q=pixar+animation+mesh+spline}, \url{http://graphics.pixar.com/library/}
+\item Polynomials and pi/taylor series: Matlab/machin \url{https://en.wikipedia.org/wiki/Chronology_of_computation_of_%CF%80} 
+\url{https://en.wikipedia.org/wiki/Approximations_of_%CF%80#Machin-like_formula}
+\url{https://en.wikipedia.org/wiki/William_Shanks}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Course Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+\item What is algebra? Complete the sentence: Algebra is
+\begin{itemize}
+\item the math of equations.
+\item the study of math symbols.
+\item literally translated as the "reunion of broken parts"
+\end{itemize}
+\item Most important use of algebra is the idea of a function.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Chapter 1 Equations and graphs}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+%%%%%%%%%%%
+\item Motivation: Housing data and curve fitting.
+\begin{enumerate}
+\item R code. Plot of Ames housing data.
+\item On own: Describe what you see. What are the key features of the graph? What conclusions can you draw?
+\item Axis labels super important, axis scales can differ, title super important, can also be misleading
+\item Intuition: add extreme dots and interpret
+\item What if reversed x,y axis? Same data new meaning.
+\item Often no equation (general curve) to fit real data. Not even a function in this case.
+\end{enumerate}
+
+%%%%%%%%%%%%%%
+\item Linear regression: best fit line
+\begin{enumerate}
+\item How to interpret line? Slope is value of each square foot
+\item How to tell if line is any good?
+\item What if above line? Below? Distance from line is important.
+\item Can use more complex curves (polynomials, others). Time series and forecasting.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%5
+\item Chapter outline: Will teach from scratch, fast pace, deeper understanding.
+\begin{enumerate}
+\item Understand 2 dimensional space (cartesian plane, distance)
+\item Curves in 2 space (circles, lines, basics)
+\item Regions in 2 space (inequalities)
+\item Solving equations and inequalities compared to graphs.
+\end{enumerate}
+
+\end{enumerate}
+
+\subsection{1.1 The coordinate plane}
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Rectangular (Cartesian) coordinate system
+\begin{enumerate}
+\item Draw coordinate plane
+\item What does it represent? 2D space (width, height), time and quantity (temp), anything else
+\item $x,y$ axis
+\item $P=(x,y)$ point in space, over and up, not same as $(y,x)$. Example point. What does it represent?
+\item Title, units and labels super important (housing example)
+\item Important features: Origin, quadrants, axis
+\item Note, other coordinate systems (polar coords for rotation)
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Curves and regions in the plane
+\begin{enumerate}
+\item Efficient to define many points at once. Connect visualization (intuition) with equation (calculation)
+\begin{itemize}
+\item Equations represent curves in space. $x=4$ (all points $(4,y)$, $y=-2, x=y$.
+\item Inequalities represent regions in space. $y\geq 0$, $-1 <x <=3$, , $y>1$ and $x<=0$
+\end{itemize}
+\item Try on own, check in Desmos: $x=4$ and $y>=0, y=-2$ and $–1<=x<0, xy=0, xy>0, y=|x|, x=|y|$
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Pythagoras and the distance formula.
+\begin{enumerate}
+\item Example: 2 random points $P_1=(1,2)$, $P_2=(-3,4)$, draw triangle separate and remind of Pythagorean theorem
+\item General formula for any 2 points. $d(P_1,P_2)$, $P_1=(x_1,y_1), P_2=(x_2,y_2)$.
+\item Pythagorean theorem (picture proof of why is true). Wiki page.
+\item Example: Do the three points $(-1,-3), (6, 1), (2,-5)$ form a right triangle?
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Averages and the midpoint formula
+\begin{enumerate}
+\item Find the midpoint between $(1,2)$ and $(-3,4)$. Verify via the distance formula.
+\item General case for any two points.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Summary of two formulas to memorize.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Homework: 5, 7, 13, 15, 17, 19, 23, 27, 33, 35, 39, 45
+
+\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{1.2 Graph of Equations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Motivation: Equations and graphs
+\begin{enumerate}
+\item Gas at the pump. 
+\item Plot points, generalize to equation of line (considering all points at once). $x-$int, $y-$int.
+\item What if: know tank capacity? Domain and range, add car wash?
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Graph intuition: Try on own.
+\begin{enumerate}
+\item Complete a table for $x=-3,-2,-1,0,1,2,3$. Generalize to graph. 
+\item $y=x^2, 2x^2, 2x^2-4$ graph transformations, get to all parabolas $ax^2+bx+c$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Important graph features: $y=2x^2-4$
+\begin{enumerate}
+\item Domain, range, intercepts, symmetry ($x, y$, rotational, how to check?)
+\item Must there be intercepts / symmetry? No
+\item Increasing and decreasing.
+\item Trending: as $x$ goes to $+-\infty$, what happens to $y$? Asymptotes
+\end{enumerate} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Graph symmetry:
+\begin{enumerate}
+\item Examples of each case. 
+\item Find intercepts, check for symmetry: $\frac{x^2}{9}+\frac{y^2}{4}=1$, ellipse.
+\item Show in desmos.	
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Important classes of equations and graphs
+\begin{enumerate}
+\item Lines (next section), parabolas (quadratic), polynomials (next chapters), absolute value (review now), root
+\item Circles and ellipses
+\item Rationals (chapter 3)
+\item Exponential, logarithm (chapter 4)
+\item Trigonometric (precalc)
+\item More...functions are an important case.\url{https://en.wikipedia.org/wiki/List_of_mathematical_functions}
+\item Serve 2 purposes:
+\begin{itemize}
+\item simplification of reality which allow us to better understanding
+\item examples which we can study completely to develop rich theory
+\end{itemize}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\item Circles: Generalizing the distance formula.
+\begin{enumerate}
+%%%%%%
+\item Definition: A circle of radius $r>0$ and center $C=(h,k)$ is the set of all points $P=(x,y)$ of distance $r$ from $C$.
+\item Draw picture. $d(P,C)=r$ gives
+\[
+(x-h)^2+(y-k)^2=r^2.
+\]
+%%%%%%%%
+\item Example: Circle with center $C=(1,2)$ and radius $r=3$.
+\begin{itemize}
+\item Write equation and verify 4 easy points work. 
+\item How to find intercepts, maybe only $x$ in this case?
+\item Expand out to show non-standard form. How to go back? Complete the square, later in course.
+\end{itemize}
+%%%%%%%
+\item Try on own: Find equation of circle with two points on a diameter as $(-1,3), (7,-5)$. Check equation in Desmos, tell to use Desmos in HW
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%
+\item Homework: 9, 13, 19, 23, 33, 49, 55, 59, 67, 69, 73, 77, 81, 95, 99
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{1.3. Lines}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Idea of a line
+\begin{enumerate}
+\item Draw line and curve. 
+\item How to carefully distinguish? Line has constant rate of change, known as the slope. (draw many cases of lines)
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Example:
+\begin{enumerate}
+\item Line thru points $A=(1,2)$ and $B=(3,-4)$. 
+\item What is the constant rate of change?
+\[
+m = \frac{y2-y1}{x2-x1}= -3= \frac{\Delta y}{\Delta x} = \frac{rise}{run}
+\]
+\item How to define in general for any point $(x,y)$? Slope still should hold.
+\[
+m = \frac{y-y1}{x-x1}= -3
+\]
+for any point on the line. Leads to point-slope form.
+\item Find another point on line and double check slope is the same.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Equations and cases of lines:
+\begin{enumerate}
+\item Slopes cases and graphs: Positive, negative, zero, none
+\item Equations of lines:
+\begin{itemize}
+\item Point-slope form (reaffirms constant change)
+\item Slope intercept (simple, know where you start)
+\item Standard form $Ax+By+C=0$ (most general, every line captured, many equations for same line, nice for theory)
+\item Which form is best? Different intuition of each, different interpretation.
+\end{itemize}
+\item Find the equation of the line given two intercepts. Point and slope.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Example: Interpretation of lines.
+\begin{enumerate}
+\item Getting gas and car wash
+\item General slope-intercept form: $y=mx+b$
+\item How much gas can you get if only have \$20?
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Comparing lines
+\begin{enumerate}
+\item Parallel / perpendicular / intersecting lines.
+\begin{itemize}
+\item Example: Find a line perpendicular to $y=2x$. Show perpindicular.
+\item General case for $y=mx+b$.
+\end{itemize}
+\item Example: Find the perpendicular bisector of segment $AB$ where $A=(1,4), B=(7-2)$. Find its $x$ and $y$ intercepts. Graph result. Check in Desmos.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Homework: 9, 17, 21, 23, 25, 29, 35, 37, 43, 47, 61, 63, 65, 67, 77, 81
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{1.4 Solving quadratic equations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Equation solving:
+\begin{enumerate}
+\item Linear: $mx + b = 0$, $m \neq 0$ (easy to solve)
+\item Quadratic: $ax^2 + bx + c = 0$, $a \neq 0$ (harder / richer)
+\begin{itemize}
+\item Shows up in naturally many places: geometry, physics, optics, optimization, finance
+\item Babylonian story and the solutions (YBC 7289)
+\item Here we just focus on solving equations, graphs in Chapter 2-3
+\end{itemize} 
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Solving quadratic equations $ax^2+bx+c=0$. Three methods:
+\begin{enumerate}
+\item Factor (always easiest, not always doable)
+\item Complete the square (useful technique in surprising places)
+\item Quadratic formula (memorize, can be tedious)
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Example: Try on own. Solve $2x(x-2)=x+3$ for $x$. 
+\begin{enumerate}
+\item 2 ways, factoring and quadratic formula
+\item Check solutions work
+\item Note why factoring separates into two equations ONLY if one side is zero.
+\item Note factoring not always possible
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Complete the square
+\begin{enumerate}
+\item Basic examples: $x^2 = 4$, $(x-1)^2 = 4$, $3(x-1)^2=4$, note the +- for two solutions.
+\item What if not in this form? $3x^2-6x-1=a(x-h)^2+k=0$, needs some work to get there.
+\item Idea: Rewrite $ax^+bx+c=0$ (standard form) into $a(x-h)^2+k = 0$ (vertex form)
+\[
+3x^2-6x-1=0 \leftrightarrow 3(x-1)^2=4
+\]
+\item First example: $x^2+6x-7=0$. Note could have factored.
+\item Less basic: $3x^2-6x-1=0$. 
+\item Try on own: $4x^2-40x+13=0$. Check via quadratic formula, doesn’t factor easily. Note how similar to quadratic formula.
+\item Quadratic formula derived: $ax^+bx+c=0$ into $a(x-h)^2+k = 0$. Wikipedia animation: \url{https://en.wikipedia.org/wiki/Completing_the_square}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Number of solutions of a quadratic equation
+\begin{enumerate}
+\item 0-2 solution: Investigate each and discuss why. ($x^2=0,1,-1$ and compare to completing the square process). 
+\item Discriminant and the quadratic formula (give a table with number of solutions).
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%
+\item Homework: 7, 13, 17, 25, 25, 35, 37, 41, 57, 59, 61, 69, 75, 85
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{1.5 Complex numbers}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Quadratic equation with no real solution
+\begin{enumerate}
+\item $x^2 = -1$ not solvable with real numbers. Extending our real number systems allows for a solution. 
+\item Imaginary number: Define $i = \sqrt{-1}$.
+\item Powers of $i, i^2, i^3,...$ cycle. 4 cases.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Complex numbers and the complex plane.
+\begin{enumerate}
+\item Real numbers, imaginary numbers, add to get complex numbers in complex plane. Real and imaginary parts.
+\item Graph in the complex plane.
+\item Think of an extension of real numbers to allow more room. 
+\item Complex conjugate, pairs of numbers.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\item Complex arithmetic:
+\begin{enumerate}
+\item Add / subtract
+\item Multiply
+\item Divide, multiply by the conjugate
+\item Note: Result is always of the form $a+bi$.
+\item Example: Try on own
+\[
+\frac{(1+2i)(3-4i)}{5+6i}
+\]
+\item Example: Try on own.
+\begin{itemize}
+\item Solve for $x$: $x=6-13/x$
+\item Note a quadratic, check the discriminant for them to know expect complex.
+\item Verify one of the solutions, can see where conjugate comes from
+\end{itemize}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item Applications of complex numbers: \url{https://en.wikipedia.org/wiki/Complex_number#Applications}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\item Homework: 7, 11, 19, 29, 35, 39, 43, 45, 47, 49, 55, 57, 63, 69
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{1.6 Solving other types of equations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Ideas of this section: Handle equations with...
+\begin{enumerate}
+\item Factoring by grouping for polynomial equations
+\item Fractional expressions
+\item Mixed powers and radicals
+\item Substitution
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item Factoring by grouping:
+\begin{enumerate}
+\item Example: $3x^3-5x^2-12x+20=0$
+\item Note, solving cubics not easy compared to quadratics.
+\item Cubic formula for general solution.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Fractional expressions and extraneous solutions (solutions introduced thru alg operations, domain change, always check at end).
+\[
+\frac{1}{x-6} + \frac{x}{x-2} = \frac{4}{x^2-8x+12}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Fractional powers, remove the root, more extraneous solutions possible.
+\begin{enumerate}
+\item Example: $x+\sqrt{5x-19} = -1$
+\item Try on own: $\sqrt{2x-3} - \sqrt{x+7}  + 2 = 0$
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Substitution, simple but powerful technique.
+\[
+x^6-3x^3 – 40 = 0
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%5
+\item Homework: 7, 19, 21, 25, 27, 33, 35, 43, 47, 55, 57, 59, 67, 73
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{1.7 Solving inequalities}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Inequality basics:
+\begin{enumerate}
+\item $<, >, \geq, \leq$
+\item Draw on number line, give interval notation: $x>-1$, $x\leq 2$, $-1<x\leq 2$. 
+\item Emphasize the difference between $[$ and $($. 
+\item Intersection and union notation. And vs or. 
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Rules for inequalities: Add, subtract, multiply, divide
+\begin{enumerate}
+\item $x>1, x+2 >1+2, 2x>2, x/3 > 1/3$, draw number lines.
+\item Negative multiplication / division exception: Reflection about zero.
+$2>1 , -2 < -1$
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Solving linear inequality: 
+\begin{enumerate}
+\item Example: $9+x/3 > 4-x/2$
+\item Use above operations. Avoid negative mult / division if possible.
+\item Not easy to check, can use Desmos to visualize.
+\item Double linear inequality. Think of as two inequalities (and), but can combine work into one.
+\[
+2<  (6-5x)/3  \leq 5
+\]
+Check via Desmos.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Solving nonlinear inequalities.
+\begin{enumerate}
+\item Example: $x^2-3x<=4$
+\item Factor and consider cases, sign chart on number line, write as both interval and inequality, RHS must be zero. Don't divide by expressions involving $x$ since we don't know the sign.
+\item Try on own: $-3x^2 < -21x+30$
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item Challenge problems.
+\begin{enumerate}
+\item $(x-5)(x-2)(x+1) > 0$. Zero on one side is key. Draw number line and sign chart.
+\item Try on own: $(1+x)/(1-x) >= 1$
+\item Try on own: $(x+2)/(x+3) < (x-1)/(x-2)$
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Modeling
+\begin{itemize}
+\item Jobs: Number of employees $x$. I have 220 hours work to cover every week and each person works 40 hours per week. I pay $1000$ per person per week and I have a budget for $7500$ per week. What are the possible number of employees?
+\item Car rental: plan A, 30 per day, 0.1 per mile, plan B, 50 per day, 0.05 per mile. For what range of miles will plan B save your money?
+\item Projectile: A ball is thrown upward with an initial velocity of 20 ft/s from the top of a building 100 ft high. It's height h above the ground $t$ seconds late will be $h = 100 + 20t-20t^2$. During what time interval will the ball be at least 60 ft above the ground?
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Homework: 19, 27, 33, 37, 39, 47, 51, 55, 59, 67, 81, 93
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{1.8 Solving absolute value equations and inequalities}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Idea of absolute value:
+\begin{enumerate}
+\item Distance from zero on the number line
+\item Piecewise definition
+\item Graph via PW definition
+\item Important when thinking of size
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Absolute value equations: Goal is to isolate and remove the absolute value.
+\begin{enumerate}
+\item Basic examples: $|x|=2, |x-3|=1$. Number line version of each. Plug in and check.
+\item $3|2x-7|-9=0$. Check via Desmos. What if +9? No solution possibility.
+\item Try on own: $|x+3|=|2x+1|$. Check via Desmos.
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Absolute value inequalities: Goal is to isolate and remove the absolute value.
+\begin{enumerate}
+\item Examples: $|x|<2$, $|x|>2$. Again explain by distance. Interval notation for the solution.
+\item Example: $|3x+1|+4>15$
+\item Example: Try on own: $1<|x-5|<=3$
+\item Nuance example: $(x-1)^2 >4$. Variation: $(x-1)^2<4$
+\item Challenge example: $|x+1| + |x-2| \geq 4$
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Homework: 7, 9, 13, 17, 21, 25, 27, 31, 39, 45, 49, 51, 53, 55, 57
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Chapter 1 Review}
+
+Exam review problems:
+\begin{enumerate}
+\item Chapter 1 Review: 
+\item Concept check: 1-20
+\item Exercises: 1-30, 35-94
+\item Chapter 1 test: 1-14
+\end{enumerate} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Chapter 2 Functions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item Function: the most important idea of this class.
+\begin{itemize}
+\item Applications: Channel an action into equation
+\item Math: Foundation of all math theory
+\end{itemize}
+
+\item Equations vs functions
+\begin{itemize}
+\item Static: Solve $3=4x-5$ for $x$
+\item All cases: Study $y=4x-5$ for all $(x,y)$, as $x$ changes how is $y$ influenced?
+\item Key is generalization, thinking of this equation as an action performed on input $x$ to generate output $y$.
+\item Housing example and linear regression. Instead of understanding a single house instance, we can to generalize to the entire real estate situation.
+\end{itemize}
+
+\item Power of functions:
+\begin{itemize}
+\item Practical view: Understanding and intuition. General rule (conceptual), formula (calculation), graph (intuition), super rich discussion
+\item Math Theory foundation: Study many situations at once (classes of functions, lines, polynomials, exp; large groupings, smooth, continuous). Calculus is built on this, all smooth functions. More general makes for fuzzy understanding, but far reaching.
+\end{itemize}
+
+\item Chapter outline:
+\begin{itemize}
+\item Idea of functions (concept, visualize)
+\item First full function story (linear, quad/poly/rationals in chp 3, exp/logs in chp 4)
+\item Combining / transforming simple functions to harness complexity
+\item Reversing functions (inverses)
+\end{itemize}
+
+\item Application: Real world is complex, how to find a function that represents it? Machine learning is one way.
+\begin{itemize}
+\item Classification: Cat, bird, bird song, 
+\item Forecasting: Stock market, covid
+\item Many more
+\end{itemize}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{2.1 Functions}
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Idea and definition of function:
+\begin{enumerate}
+\item Complete this sentence: A function $f(x)$ is....
+\item What is the key idea? Why does it matter? Go as detailed as possible.
+\item Definition: A function $f(x)$ is a rule which maps one input $x$ to at most one output $y$, written $y=f(x)$.
+\item Diagram to conceptualize: Domain, range, indep variable, dep variable
+\item Most important part: One input to at most one output. Why? Want certainty in what will happen.
+\item Think of as a machine: One thing in, at most one out.
+\item Example: Email mapped to student. Want message to go to one person. Is reverse association possible?
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Representations of functions:
+\begin{enumerate}
+\item Description (easy to understand, hard to use)
+\item Table (practical and easy, not general)
+\item Formula (good for calculation, not intuitive)
+\item Graph (good for intuition, not practical)
+\item Example: Line $y = 2x+1$. 4 versions. 
+\item Best case is knowing all versions.
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Example: Consider $y=f(x)=x^2+2x-3$
+\begin{enumerate}
+\item Input to output: $f(2), f(a+2)$.
+\item Output to input: When is $f(x)=-3$? More at end of chapter.
+\item Try on own: Simplify the difference quotient $(f(a+h)-f(a))/h$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Piecewise functions:
+\begin{itemize}
+\item Combining rules, three part example (const, $-2x+1$, $x^2$).
+\item Graph. Function evaluations.
+\item Should remind of absolute value.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Finding domain and range:
+\begin{enumerate}
+\item $y = f(x) = x^2$, parabola, will study quadratics as transformations of this one in chapter 3.
+\item Define domain and range. Draw diagram.
+\item Find domain and range, check in desmos.
+\item Domain usually easy, range take knowledge or intuition and often not doable.
+\item Try on own: $f(x)=3/\sqrt{4-x}$. What can't $x$ be? Check in desmos, graph inequality
+\item Try on own: Find the domain of $f(x) = \frac{\sqrt{x^2-1}}{x+2}$ and write in interval notation. Range not easy. Check for zero division and negative roots, same for most of this class with functions.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Homework: 1, 3, 5, 7, 11, 17, 19, 21, 25, 29, 31, 33, 37, 39, 43, 49, 51, 55, 59, 69
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{2.2 Graphs of functions}
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%5
+\item Graph features and stock prices.
+\begin{enumerate}
+\item Google tesla stock
+\item Graph labels important
+\item Is this a function? What is $x, y$? Domain / range?
+\item Key features: Inc / dec, max / min (local and global)
+\item Net change: $f(b)-f(a)$, average change: $(f(b)-f(a))/(b-a)$
+\item Hard to find precise values with graph, better to have a formula $f(x)$. Not doable here. 
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%
+\item Graph features: Definitions
+\begin{enumerate}
+\item Draw $y=f(x)$, general graph on side
+\item Vertical line test
+\item Domain / range
+\item Inc / dec
+\item Max / min, local and absolute
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%
+\item Example: Does the equation $x^2-y=7$ represent a function?
+\begin{enumerate}
+\item Is $y$ a function of $x$? Is $x$ a function of $y$? If yes write in function notation.
+\item Graph function knowing basic $y=x^2$.
+\item Domain and range
+\item Try on own for $x^2+y^2=9$. In some cases can solve for $y$ as two separate functions. Easy if know the graph.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%
+\item Graphs of functions: Visualizing a graph gives intuition of its behavior.
+\begin{enumerate}
+\item 2 ways to draw graphs:
+\begin{itemize}
+\item Plot points, last resort, better left to computers
+\item Understand classes of function (lines, parabolas, etc).
+\end{itemize}
+\item Important classes of functions:
+\begin{itemize}
+\item Linear: $f(x)=mx+b$
+\item Powers: $x^n$, even vs odd cases
+\item Root: $\sqrt[n]{x}$
+\item Reciprocal: $1/x^n$
+\item Abs value: $|x|$
+\item Greatest integer: $[ x ]$
+\item Will modify these later to grow complexity.
+\end{itemize}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%5
+\item Homework: 5, 7, 9, 15, 19, 23, 35, 37, 45, 49, 51, 53, 57, 61, 77
+
+\end{enumerate}
+
+
+\subsection{2.3 Information from graphs of functions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Recall: Key graph features.
+\begin{enumerate}
+\item $y=f(x)$, general graph on side
+\item Vertical line test
+\item Domain / range
+\item Inc / dec
+\item Max / min, abs and local
+\item Example: Find all important features of $f(x) = \sqrt{9-x^2}$.
+\item Example: Graph comparisons of $g(x)=x > , <, =, f(x)=\sqrt{9-x^2}$.
+\item Try on own: Graph comparisons of $g(x)=x^2 > , <, =, f(x)=x+2$.
+\end{enumerate} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Homework: 7, 9, 11, 13, 15, 23, 25, 31, 33, 43, 45, 
+
+
+
+
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{2.4 Average rate of change of a function}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\item AROC idea:
+\begin{enumerate}
+\item Dis = rate (time), one decides the other, odometer vs spedometer.
+\item What is the average velocity ($v(t)$, change in distance) if I go 20 miles in 15 mins? Note, we don’t know a formula for $v$ for all $t$. 
+\item Also called difference quotient.
+\item Distinguish between net change and AROC.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\item AROC and function graphs:
+\begin{enumerate}
+\item $f(x) = x^2$ graph, AROC on [1,3]. Slope of secant line.
+\item General case $f(x)$, 2 forms. 
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\item Lines redefined, the precise way.
+\begin{enumerate}
+\item Line $y=f(x) = mx+b$ is the function such that AROC is always constant.
+\item $(f(b)-f(a))/(b-a)= \dots = m$ for any $a,b$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%
+\item Calculus and the paradox of AROC:
+\begin{enumerate}
+\item First problem of calculus considers AROC approaching IROC. Secant lines approaching tangent lines. 
+\item Need a way around zero division. Invention of idea of limit is the key.
+\item Desmos tangent and secant line
+\item \url{https://en.wikipedia.org/wiki/Rate_(mathematics)#Rate_of_change}
+\item 3blue1brown the essence of calculus
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\item Homework: 7, 9, 11, 15, 19, 23, 25, 27, 
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{2.6 Transformation of functions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Motivation: Power of linear transformations.
+\begin{enumerate}
+\item List of 6 transformations for $f(x)$ and general combination.
+\item Why bother? Can go from a basic function ($y=x^2$) to very complex transformation ($y=-2(x-3)^2+10$).
+\item Grow tremendously the number of functions we can graph and understand.
+\item Study each individually to gain intuition. Combine to understand complexity.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item $y$-direction transformations for $f(x)=x^2$.
+\begin{enumerate}
+\item Summary: $y=f(x)$ vs $y=f(x)+k$ vs $y = af(x)$ vs $y= = -f(x)$ vs all combined $y=-af(x)+k$.
+\item Vertical shift: 
+\begin{itemize}
+\item $f(x)+k$, how is the output of f changed? Note, output changes, input location does not.
+\item $y=f(x)=x^2, f(x)+2, -3$.
+\item Use Desmos tables. Draw +2 carefully on slide. Keep track of three points moving.
+\item This balance of formula, table, graph is what grows your intuition in this class, rich diversity of perspective.
+\end{itemize}
+\item Try yourself: 
+\begin{itemize}
+\item Remaining $2, af(x), -f(x)$
+\item Try in Desmos for various choices. Explain what happens. 
+\item Y multiplied (vertical stretch). Y flipped in sign (x-axis reflection)
+\end{itemize}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item $x$-direction transformations for $f(x)=x^2$.
+\begin{enumerate}
+\item Summary:  $y=f(x)$ vs $y=f(x-h)$ vs $y = f(bx)$ vs $y= = f(-x)$ vs all combined $y=f(-b(x-h))$.
+\item Horizontal shift:
+\begin{itemize}
+\item $f(x-h)$, how is the output of f changed? Note, output stays same, input location changes. Why minus?
+\item $y=f(x)=x^2, f(x-2), +3$
+\item Use Desmos tables. Draw -2 carefully on slide. Keep track of three points moving.
+\end{itemize}
+\item Try yourself:
+\begin{itemize}
+\item Remaining $2, f(bx), f(-x)$
+\item Try in Desmos for various choices. Explain what happens. 
+\item Note the reversing of horiz stretch
+\item Trace points
+\end{itemize}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Combining transformations:
+\begin{enumerate}
+\item Example: Knowing the graph of $y=x^2$, graph instead $y=-3(x-1)^2+2$.
+\item Break into many steps. Order of steps matters. Track three main points. Show how to check in end.
+\item Trace points
+\item Standard form $ax^2+bx+c$ to vertex form $a(x-h)^2+k$. Complete the square, use transformations of $x^2$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Graph symmetry:
+\begin{enumerate}
+\item 3 types for general graphs: $x$-axis, $y$-axis, rotational. How to describe carefully? For all (x,y) on the graph, what other point must be on?
+\item 2 cases apply to functions. Name even and odd for power functions $x^n$, give careful definition, criteria to check. Goal is to identify and leverage pattern in a function
+\item Check if even, odd , or neither. 
+\begin{itemize}
+\item $f(x)=x^4-2|x|$
+\item $f(x)=x+1/x$
+\item $f(x)=x+|x|$
+\item Note we don't need to know the graph (shouldn't trust anyways).Check via Desmos.
+\end{itemize}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Homework: 1, 3, 7, 9, 11, 15, 23, 25, 27, 29, 33, 41, 45, 47, 51, 69, 71, 83, 85, 87
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{2.7 Combining functions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Idea: 2 ways to grow complexity of functions to understand.
+\begin{enumerate}
+\item Graph transformations
+\item Combine functions
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Definitions: Arithmetic combinations of functions $f(x)$ and $g(x)$.
+\begin{enumerate}
+\item $f+g, f-g, f \cdot g, f/g$
+\item Only new thing is notation, take care about how you write.
+\item Domain is $D_f \cap D_g$, avoid zero division for last case.
+\item Example: $f(x)=\sqrt{x+2}, g(x) = x/(x+1)$, compute $(f+g)(1), (f/g)(0)$.
+\item Example: Compute $(f/g)(x)$ in general. Keep track of domain changes and compare to $D_f \cap D_g$, avoid zero division.
+\item Basic arithmetic operations bit boring. Simple, notation just shorthand. 
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%
+\item Function composition definition and idea.
+\begin{enumerate}
+\item Doing functions in order more interesting.
+\item $(f \circ g)(x) = f(g(x))$, draw diagram, relay race. 
+\item Do an operation first, apply to the result. 
+\item Domain, all $x$ in $D_g$ such that $g(x)$ is in $D_f$.
+\item Note, $(f \circ g)(x) \neq (g \circ f)(x)$.
+\item Example: Savy shopper. 10\$ off. 7\% discount. Which to use first? Let $x$ be the cost of the thing. Write as two functions: $f(x) = x-10, g(x) = 0.97x$, $f(g(x))$ vs $g(f(x))$.
+\item Example:
+\begin{itemize}
+\item $f(x) = x/(x-2), g(x) = 1/x$
+\item $(f\circ g)(x)$ at $x=3, 1/2$
+\item Domain is the key discussion, $1/2$ not in the domain even though $g(1/2)$ makes sense.
+\item Find the domain 2 ways: need $x$ in domain of $g$, $g(x)$ in domain of $f$, simplify keeping track of domain changes.
+\end{itemize} 
+\item Example: Try on own. $f(x) = x/(x^2-1)$, $g(x) = 2x-1$, $f \circ g$ versus $g \circ f$. Domain of each, note not the same.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Example: Decomposing composition.
+\begin{enumerate}
+\item $h(x) = (2x+5)^3$, many ways to write as composition, no uniquiness.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Example: Next section teaser.
+\begin{enumerate}
+\item $f(x) = 3x-5, g(x) = 1/3 x+5/3$
+\item $f \circ g = g \circ f = x$
+\item Draw diagram. $g$ action undoes $f$ action.
+\item This is the idea of inverse, next section.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Iteration and chaos: \url{https://en.wikipedia.org/wiki/Chaos_theory}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Homework: 1, 9, 11, 15, 17, 21, 27, 29, 31, 33, 35, 37, 49, 55, 59, 63, 73, 81, 83
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{2.8 One to one functions and their inverse}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%55
+\item Key idea: Reversing a function.
+\begin{enumerate}
+\item Thinking of a function as an action, how to reverse this action? Reverse is called the inverse function.
+\item Domain/range diagram. Notation.
+\item Question: Can you always reverse a function? No. Need each output to belong to a single input.
+\item Examples: Student to id, encrypt and ecrypt, currency exchange, feet/meters
+Need certainty for reversing. Not always possible. Student to class.
+\item Example: $f(x) = -2x+1$. Given and output, find the input. $y=-3,5$. Draw graph. General $y$. New function $x=f^{-1}(y)$ is the reverse mapping of $f$
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\item Definitions:
+\begin{enumerate}
+\item Careful definitions: One-to-one function, inverse function, diagram, function composition identities, flip of domain and range.
+\item How to tell in invertible (one-to-one)? 
+\begin{itemize}
+\item $f(x) = -2x+1, g(x)=x^2$
+\item 2 ways, definition (if outputs match, show inputs match or give contradiction), graph (HLT, not precise). 
+\end{itemize}
+\end{enumerate}
+
+%%%%%%%%%%%%
+\item Examples
+\begin{enumerate}
+\item $f(x) = x^2-1, x>=0$ domain restriction to make invertible
+\item Graph, show one-to-one
+\item Find the inverse. Check composition identity.
+\item Graph both, relate the domain and range. Note reflective symmetry.
+\item Graph in Desmos, hint at general case.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%
+\item Graphs of a function and its inverse
+\begin{enumerate}
+\item General picture. Domain and range flip. 
+\item Reflective symmetry across y=x. 
+\item All different views of the same basic definition.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%55
+\item Example: Try on own.
+\begin{enumerate}
+\item F(x) =(x+2)/(2x-1)
+\item Use Desmos to show invertible
+\item Find inverse, verify composition identity.
+\item Verify domain / range relation
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%
+\item Homework: 5, 7, 9, 13, 15, 17, 23, 25, 29, 31, 39, 43, 47, 49, 55, 61, 69, 73
+\end{enumerate}
+
+\subsection{Chapter 2 Review}
+
+\begin{enumerate}
+\item Concept Check: 1-9, 11-14
+\item Exercises: 1-42, 51-56, 69-74, 85-92, 95-102
+\item Chapter test: 1-4, 6-21
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Chapter 3 Polynomial and rational functions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item Goals of the chapter:
+\begin{enumerate}
+\item Study an important class of function: Polynomials
+\begin{itemize}
+\item Application importance: Approximation by polynomials (Computer graphics, math modeling, physics, splines, FE method, parabolas)
+\item Math importance: Represent any function $f(x)$ as a power series.
+\end{itemize}
+\item Study infinity (asymptotics) via rational functions.
+\end{enumerate}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%5
+%%%%%%%%%%%%%%%%%%%%%
+\subsection{3.1 Quadratic functions and models}
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Why quadratic functions?
+\begin{enumerate}
+\item Applications: \url{https://en.wikipedia.org/wiki/Parabola}, death ray, etc
+\item Math theory: Rich example compared to lines, balance equation solving and alg techniques with graphs and intuition.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Basics:
+\begin{enumerate}
+\item Definition: Standard form and vertex form
+\item Connect to what we know via graph transformations
+\item Vertex, axis of symmetry (max/min location), concave up / down
+\item Example: $f(x) = x^2-5x-6$. 
+\begin{itemize}
+\item Complete the square to vertex form. 
+\item Graph via transformations and label details.
+\item Complete the square to vertex form.
+\item Can also find the vertex midway between the $x$ intercepts and skip graph transformations. Vertex also appears in quadratic formula.
+\end{itemize}
+\item Example: Try on own. $f(x) = -2x^2-12x-8$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Quadratic function summary
+\begin{enumerate}
+\item Recap main ideas. 
+\item Hint at applications with max / min values (optimization).
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Applications of quadratics.
+\begin{enumerate}
+\item Chicken run, 200ft of fence. How to maximize area enclosed?
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Homework: 5, 7, 15, 17, 23, 27, 29, 47, 51, 57, 63
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{3.2 Polynomial functions and their graphs}
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%
+\item Why polynomials?
+\begin{enumerate}
+\item Applications: Computers, splines and yoda, approximation in general.
+\item Math: Taylor series and theory of all functions
+\item This class: Important class of functions, think in terms of generalization (constant, to linear, to quadratic, and so on)
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%5
+\item Definition:
+\begin{enumerate}
+\item General definition, coefficients, degree, domain, range, standard form 
+\item Graphs: linear, quad, cubic, quart, …. graph to dev intuition
+\item Degree $n$ can have at most $(n-1)$ extrema
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%5
+\item Examples:
+\begin{enumerate}
+\item $p(x)=-2(x-4)^2(x+1)$ as factored form. Find degree, leading coefficient, zeros, multiplicity, real / complex zeros, Graph in Desmos, end behavior same as high order term.
+\item $p(x) = x^4+x^3-x^2$. Factor completely and sketch the graph. Domain, range, end behaviour, multiplicity of zeros. Some features need calculus to get all details.
+Take advantage of multiplicity on sign chart.
+\item Try on own: $p(x) = 2(x+3)(x-1)^2(x-2)$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%5
+\item Homework: 5, 7, 9, 11, 13, 17, 23, 25, 29, 35, 37
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{3.3 Dividing polynomials}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Motivation:
+\begin{enumerate}
+\item Graphing polynomials is doable if you have factored form. How to get factored form?
+\item Find a zero, and divide by the corresponding factor. 
+\item Find any factor and divide.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Recap of integer long division: Same as long division for polynomials.
+\begin{enumerate}
+\item Try on own: $1234/8 = 161 + 6/8$. Dividend, divisor, quotient, remainder.
+\item Remainder. Can rewrite as $1234 = 8*161 + 6$
+\item If remainder is zero, division is really factoring: $1228/8 = 161$ is same as $1228 = 8*161$. This is our target.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Polynomial long division:
+\begin{enumerate}
+\item Example: $(2x^3-7x^2+5)/(x-3)$. Check via multiplication. Note, if higher degree divisor, can do just as easy $(2x^3-7x^2+5)/(x^2-3)$.
+\item Example: Try on own. Solve $x^3-7x+6=0$. Note, $x=1$ is a solution, meaning $(x-1)$ is a factor. Do long division. Expect quotient to be a quadratic. Check solution via desmos.
+\item Overview:
+\begin{itemize}
+\item $p(x)/d(x) = q(x) + r(x)/d(x)$ terminolgy
+\item $p(x) = q(x)d(x) + r(x)$
+\item Compare to previous example
+\item Note, if $r(x) = 0$ then $d(x)$ is a factor of $p(x)$
+\item Challenge of factoring, need to know a zero first. Many techniques.
+\item Synthetic division vs long division. Is short hand better?
+\end{itemize} 
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Homework: 3, 7, 9, 13, 17, 19, 57, 61, 63, 67, 71, 73
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{3.4 Real zeros fo polynomials}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+SKIP
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Rational zeros of polynomial
+\begin{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Rational zeros theorem: if the polynomial $P(x)=c_nx^n + \dots c_1x + c_0$ has integer coefficients (where $c_n\neq 0$ and $c_0 \neq 0$), then every rational zero of $P$ is of the form $p/q$ (fraction in lowest terms)
+where $p$ and $q$ are integers and $p$ is a factor of $a_0$, $q$ is a factor of $a_n$.
+\item Proof: Assume $p/q$ is a rational zero. Then $P(p/q)=0$ and rearranging yeilds
+\[
+p(a_np^{n-1} + a_{n-1}p^{n-2}q +  \dots a_1 q^{n-1}) = -a_0q^n
+\]
+So $p$ is a factor of the number on the left and since $p/q$ is in lowest terms, $a_0$ must have a factor of $p$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Process: 
+\begin{enumerate}
+\item List all possible zeros and check if they work. 
+\item Once you find a zero. Divide and find zero remainder.
+\item Repeat.
+\end{enumerate}
+\item Example: finding rational zeros of $P(x) = 2x^3 + x^2 -13x + 6$, $P(x)=12x^3-20x^2-13x-6$, $p(x)=x^4-5x^3-5x^2+23x+10$.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Decartes' rule of signs: OMIT
+\begin{itemize}
+\item the number of positive real zeros of $P(x)$ is equal to the number of variations in sign in P(x) or is less than that by an even whole number
+\item the number of negative real zeros of $P(x)$ is equal to the number of variations in sign in P(-x) or is less than that by an even whole number
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Upper and lower bounds theorem: OMIT
+\begin{itemize}
+\item If we divide $P(x)$ by $x-b$ with $b>0$ using synthetic division and if the row that contains the quotient and remainder has no negative entry then $b$ is and upper bound for the real zeros of $P(x)$
+\item If we divide $P(x)$ by $x-a$ with $a<0$ using synthetic division and if the row that contains the quotient and remainder has entries that are alternately nonpositive and nonnegative, then a is a lower bound for the real zeros of P
+\item Show that all the zeros of the polynomial $P(x) = x^4-3x^2+2x-5$ lie between $-3$ and $2$
+\item Does it make sense? Try take a big upper bound and small lower bound
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Factoring any polynomial and graph the polynomial: OMIT
+$$
+x^4-6x^3+3x^2 + 26x-24
+$$
+\begin{itemize}
+\item Possible zeros
+\item Decartes rule
+\item Graph the polynomial
+\end{itemize}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{3.5 Complex zeros and the fundamental theorem of algebra}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Motivation:
+\begin{enumerate}
+\item Factor $p(x) = x^4+x^3+7x^2+9x-18$ knowing that $1$ and $–2$ are both zeros.
+\item Result is linear factor and irreducible quadratic (with complex roots).
+\item Still, roots are factors, just need complex numbers to make sense of it.
+\item Note conjugate pair relationships.
+\item Every polynomial can be factored completely.
+\item Check in Desmos.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Fundamental Theorem of Algebra
+\begin{enumerate}
+\item Every degree $n$ polynomial has $n$ roots (real or complex) up to multiplicity.
+\item Huge math impact. Connects two big areas: algebra and geometry. Complex plane is a elegant place to do geometry.
+\item Search FTOA, complex plane, fourier series
+\item Fundamental theorem of calculus is your chance to see such a thing in action.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Example: Find a degree 5 polynomial with zeros $–3$ repeated twice, $2i$, and $1$ with $y$-intercept $5$. Check your result in Desmos.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Homework: 7, 9, 13, 29, 31, 37, 41, 47, 67
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{3.6 Rational functions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%
+\item 
+
+%%%%%%%%%%%%%%%%
+\item 
+
+%%%%%%%%%%%%%%%%
+\item Motivitation and infinity twice.
+\begin{enumerate}
+\item Basic case: $r(x) = 1/x$
+\item Reason out graph. Domain and range.
+\item Label VAs and HAs. 
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%
+\item Definitions:
+\begin{enumerate}
+\item $r(x) = p(x)/q(x)$ for $p,q$ polynomials. Domain requires $q(x)$ not zero. Show up places, especially in math theory. Good setting to think about infinity.
+\item Vertical and horizontal asymptotes. Asymptotics and end behavior.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%
+\item Example:
+\begin{enumerate}
+\item Graph $r(x)=(3x+6)/(x-1)$
+\item Zeros, asymptotes, sign chart helps.
+\item \item Think of end behavior by dividing by the highest order term. $1/x$ is easy to understand.
+\item Check with Desmos.
+\item Try on own: Same for $r(x)=(2x^2+7x-4)/(x^2+x-2)$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%
+\item Other situations.
+\begin{enumerate}
+\item Does there always have to be a VA? No can be a hole: $x/x, (x^2-2)/(x+2)$
+\item Does there always have to be a HA? No degree doesn't have to match for $p$ and $q$. Zero HA, slant asymp, etc. Long division gives the slant asymptote.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%
+\item Homework: 9, 11, 13, 15, 21, 23, 29, 33, 35, 45, 53, 55, 63, 73
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Chapter 10 Systems of equations and inequalities}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{10.1-10.2 Systems of linear equations in two variables}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{enumerate}
+\item Motivation: Building a shed. 
+\begin{itemize}
+\item One company charges \$2000 plus \$15 per square foot. 
+\item One company charges \$5000 plus \$10 per square foot. 
+\item For what square footage will the companies match?	
+\end{itemize}
+
+\item Motivation: Bottle feed a goat.
+\begin{itemize}
+\item Formula 1 contains 5 mlg of calcium per ounce and 10 mlg of vitamin A per ounce.
+\item Formula 2 contains 8 mlg of calcium per ounce and 2 mlg of vitamin A per ounce.
+\item The goat needs 100 mlg of calcium and 60 mlg of vitamin A per day.
+\item How much of each formula should we use without wasing?
+\end{itemize}
+
+\item System of linear equations
+\begin{enumerate}
+\item Definition
+\item Solution by graph: intersection of lines
+\end{enumerate}
+\item Solving system of linear equations
+\begin{enumerate}
+\item Substitution
+\item Elimination
+\end{enumerate}
+\item The number of solution
+\begin{enumerate}
+\item One solution
+\item No solution
+\item Infinitely many solutions
+\end{enumerate}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{10.2 Systems of linear equations in several variables}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item General linear system
+\begin{enumerate}
+\item Definition
+\item Method of substitution
+\item Method of elimination
+\begin{enumerate}
+\item Triangular system
+\item Method of elimination: transfer all system to an equivalent triangular system
+\begin{enumerate}
+\item Equivalent system
+\item Steps
+\begin{itemize}
+\item Add a nonzero multiple of one equation to another
+\item Multiply an equation by a nonzero constant
+\item Interchange the positions of two equations
+\end{itemize}
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\item Number of solutions of a linear system: count number of equations and number of variables
+\begin{enumerate}
+\item No solution: inconsistent
+\item The system has exactly one solution
+\item Infinitely many solution: 
+\end{enumerate}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{10.4 Systems of nonlinear equations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item System of nonlinear equations: definition and graph $y = x^2$ and $y = x_1$
+\item Solving system of nonlinear equations
+\begin{enumerate}
+\item Substitution
+\item Elimination: limited
+$$
+y = x^2, \quad y = 2-x^2
+$$
+\end{enumerate}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{10.5 System of inequalities}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item Graphing a (single) inequality 
+\begin{enumerate}
+\item Move y on one side
+\item (linear, quadratic, circle)
+\end{enumerate}
+\item Graph the solution set of a system of inequalities
+\begin{enumerate}
+\item Nonlinear system
+\item Linear system
+\item Vertex
+\item Bounded, bounded 
+\end{enumerate}
+\item Optimization: give one example, don't test
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Chapter 4 Exponential and Logarithmic functions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{4.1 Exponential functions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Motivation: Compound interest example
+\begin{enumerate}
+\item Quick example
+\item General formula and explanation of each variable
+\[
+A = P\left(1+\frac{r}{n}\right)^{nt}
+\]
+\item Applied problem to find the amount given principal, compounding period, and rate. 
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Basic: Review laws of exponents! Refresher examples. \\
+\begin{enumerate}
+\item LoE: $a^0, a^1, a^ma^n, a^m/a^n, a^nb^n, (a/b)^n, a^{-n}$. 
+\item {\bf Student Examples}: Simplify $\ds \frac{\sqrt[3]{ab}\cdot b^2}{a^3\cdot b^{1/2}}; (-27)^{2/3}(4)^{-5/2}; \left( \frac{2x^{2/3}}{y^{1/2}}\right)\left( \frac{3x^{-5/6}}{y^{1/3}}\right)$
+\item What exponent means: $2^3, 2^{-1}, 2^{1/2}, 2^{-4/3}$, good for any rational number, $2^\pi, 2^i$ needs calculus, but we have faith..
+\item Solving exponential equations
+\begin{itemize}
+\item {\bf Student Examples}: Solve for $x$: $\ds 2^{-x}=8; \quad 8^{2x}=\frac{1}{2^{2-x}}; \quad 3(3^x)+9(3^{-x})=28$ (rewrite as same base and hidden quadratic)
+\end{itemize}
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Exponential function: $f(x) = a^x$
+\begin{enumerate}
+\item Definition: why $a>0$ and $a\neq1$
+\item Graphs
+\begin{itemize}
+\item Concrete examples: $f(x)=2^x, 5^x, (1/3)^x=3^{-x}$
+\item Domain and range
+\item $a^0 = 1$
+\item Increasing/decreasing
+\item Shape: depends on the a
+\item Horizontal Asymptote
+\item Note they are all one-to-one
+\end{itemize}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Reading exponential function
+\begin{itemize}
+\item Comparing base 
+\item General format: $b\cdot a^x$
+\item Identify graphs with points and shift
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Intuition / examples:
+\begin{itemize}
+\item Exponential function grows fast (mark pen example)
+\item Application: Student loan interest calculation, mortgage payment calculator. 
+\end{itemize}
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{4.2 The Natural exponential functions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Motivation: Need for a single, uniform base.
+\begin{itemize}
+\item Which one is bigger? ($3^4$ or $4^3$)
+\item The idea of a uniform base(base is not unique $2^{3x}$, $4^x$)
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item The natural base $e$
+\begin{enumerate}
+\item Rather than lots of bases $a$, we would like a uniform base with nice properties (the natural exponential). Called natural since it shows up in interesting way (instantaneous, large populations and reproduction, many times, many things, life isn't always discrete).
+\item Continuous compound interest:
+\begin{itemize}
+\item Invest \$1000 at 5\% per year.
+$$
+1000 + (0.05)1000 = 1050
+$$
+\item Same, twice a year, $\frac{5\%}{2}$ each time.
+$$
+1000 + (0.025)1000 + (0.025)(1000 + (0.025)1000)  = 
+1000(1+0.05/2)^2 = 1050.625
+$$
+\item Quarterly, $\frac{5\%}{4}$ each time.
+$$
+1000(1+0.05/4)^4 = 1050.945
+$$
+\item Daily: 1051.267 (let students choose and guess here, per day second etc)
+\item This seems to approach a limit / max.
+\item Desmos: $(1+\frac{0.05}{n})^{n/0.05}$. 
+\end{itemize}
+\item Fact: modify above desmos, sort of growth rate 1.
+$$
+(1+\frac{1}{n})^n \rightarrow e,\quad\text{when } n\rightarrow \infty  
+$$
+where $e\approx 2.72$, Euler's number. Can show $e$ is irrational as important as $\pi$, if not more. Shows up in applications all the time. 
+\item The natural exponential function $f$
+$$
+f(x) = e^x
+$$
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Law of continuous growth formula
+$$
+q = q_0e^{rt}
+$$
+\begin{itemize}
+\item $q_0$: initial quantity
+\item r: the growth rate
+\item t: time
+\item e: natural base
+\end{itemize}
+\begin{enumerate}
+\item Note:
+\begin{enumerate}
+\item $r>0$: growth rate
+\item $r<0$: decay rate
+\item $r$ is better in terms of identifying the increasing and decreasing rate, no longer have cases with the base
+\item ``real" base: $e^r$
+\end{enumerate}
+\item Continuous compound interest.
+\item When to apply: 
+\begin{enumerate}
+\item grows/decays proportional to its current value
+\item continuously (instantaneously) changing 
+\end{enumerate}
+\item Uniform base: transform $y = ae^{kt}$ to $ab^t$ (still need logs to get here)
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Applications
+\begin{itemize}
+\item Continuous compound interest
+\item Population growth
+\item Radioactive decay (half life)
+\item Anything that grow/decays at a percentage
+\item How to understand continuous (not all the time, but can happen any time)
+\item \url{https://www.google.com/publicdata/explore?ds=kf7tgg1uo9ude_&met_y=population&idim=state:06000:48000&hl=en&dl=en#!ctype=l&strail=false&bcs=d&nselm=h&met_y=population&scale_y=lin&ind_y=false&rdim=country&idim=state:06000:48000:12000&ifdim=country&hl=en_US&dl=en&ind=false}
+\end{itemize}
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{4.3-4.4 Logarithmic functions and log properties}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+\item Basics
+\begin{enumerate}
+\item Finding growth rate involves finding an input corresponding to a known output. The inverse of exponential function (all one-to-one here).
+\item Graph $f(x)=a^x$ for $a>1$ and $0<a<1$, automatically can draw $f^{-1}$. Name $f^{-1}(x)=\log_a(x)$.
+\item Careful definition of logarithm (defined to be inverse).
+$$
+y = \log_ax \quad\text{if and only if}\quad x = a^y
+$$
+\item The log as a function:
+\begin{enumerate}
+\item Domain, range
+\item Special point (1,0)
+\item Special bases
+\item Function composition of $a^x$ and $\log_a(x)$.
+\begin{enumerate}
+\item The logarithmic function with natural base: $\ln x$
+\item The common logarithmic function: $y = \log x$.
+\end{enumerate}
+\end{enumerate}
+\item {\bf Examples:} 
+\begin{enumerate}
+\item Compute $\log(1/100), \log_4(2), \log_5(1/5), \log^3(1), \log_8(4), \log_9(sqrt{3})$ (easier to look at exponential form.
+\item Solve for $x$: $\log_3(x+4)=\log_3(1-x)$ (one-to-one), $e^{2\ln(x)} = 9$ (inverses and domain restriction).  
+\item Find the domain and range: $\ln(\ln x)$.
+\end{enumerate}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Applications: 
+\begin{enumerate}
+\item Originally for hand calculation because of log properties below. (Napier, slide rule, revolution of calculation)
+\item Astronomical distance \url{https://en.wikipedia.org/wiki/Astronomical_system_of_units}
+\item The Benford's law (first digit law) \url{https://en.wikipedia.org/wiki/Benford%27s_law}
+\item Logarithmic transformation in data science: \url{https://en.wikipedia.org/wiki/Data_transformation_(statistics)}
+\item Nature: \url{https://en.wikipedia.org/wiki/Logarithmic_spiral}
+\item Solve exponential equation: $2{3x}=10$, $e^{2x}-3e^x+2=0$
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Log properties:
+\begin{enumerate}
+\item $\log_a (xy)$, $\log_a(x/y)$
+\item $\log_a (x^p)$
+\item $\log_a x = \frac{\log_b(x)}{\log_b(x)}$ change of base
+\item $a^{\log_a x} = x,\quad\log_a a^x = x$ inverse relation
+\item These are just the laws of exponents written in logarithmic form. Write $a^{s+t}, a^{st}, a^{-s}$ and draw parallels.
+\begin{itemize}
+\item Prod to sum: Let $\log_a(x)=s, \log_a(y)=t$, then $a^s=x, a^t = y$.
+\item $xy = a^sa^t = a^{x+t}$, rewrite in log form
+\item $\log_a(xy) = s+t = \log_a(x)+\log_a(y)$
+\item Rest are same idea.
+\end{itemize}
+\item As mentioned before, make calculation easier (product to sum, power to product, etc).
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Typical problems
+\begin{enumerate}
+\item Express $\log_a \frac{x^3\sqrt{y}}{z^2}$ in terms of $\log x$, $\log y $, $\log z$
+\begin{enumerate}
+\item Split $\cdot$ and $/$
+\item Bring down the power
+\end{enumerate}
+\item Express as one logarithm, opposite direction
+\item Why are we doing this? Solving equations? Solve real life problem.
+\begin{enumerate}
+\item The population of La Crosse 50000 in 2000, 55000 in 2010, what will it be in 2020 assuming continuous growth? 
+\item Which would you choose and why? Invest \$100 at 4\% or \$500 at 3\%? When do they equal? Depends on length of investment.
+\item Google population of Florida, Cali, and Texas. Which is growing faster? Let them guess and explain why. Care about growth rate here, use log plot instead. Care about slope of this new line. Not a realistic fit globally though! Population of sad North Dakota
+$$
+y = Pe^{rt}, ~ \ln(y) = \ln(P)+rt, ~ z = c + rt
+$$
+\url{https://www.google.com/publicdata/directory} Possible project here, fit exponential, logistic growth, etc
+\end{enumerate}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Solving equations examples, these main ideas are all there is.
+\begin{enumerate}
+\item $8^{2x}(\frac{1}{4})^{x-2} = 4^{-x}$. Rewrite in same base.
+\item $2^x = 3^{1-x}$, cannot rewrite in same base, use logarithm of any base. Many equivalent but different looking solutions. Nice bases to choose are 2,3.
+\item $\log_3(-x) + \log_3(8-x) = 2$. Beware of domain changes. Always need to check solution. Only $x=-1$ works here.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Transfer anything to base $e$: y = $2^x$
+\begin{enumerate}
+\item Connection between continuous and discrete cases
+\item Everything is continuous
+\item One formula but restrict your $x$ to be integer.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Groupwork handout, treat as take home quiz.
+\begin{enumerate}
+\item Tips: 
+\item Remove the log
+\item Check the domain
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{4.5 Exponential and logarithmic equations}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item Exponential function
+\begin{itemize}
+\item Basic: $3^{x+2} = 7$
+\item Different base
+\item Quadratic: $e^{2x}-e^x-2 = 0$
+\item Factor: $xe^x +x^2e^x=0$
+\end{itemize}
+\item Logarithmic function 
+\begin{enumerate}
+\item  $\log_6 (4x-5) = \log_6 (2x+1)$
+\item $\log_2(5+x)   = 4$
+\item $e^x = 4$
+\item $\log(2x+3) = \log x+1$, $\log_2 x+\log_2 (x+2) = 3$
+\item $2^x = 3^{2x-1}$
+\item $\log_4(x) + \log_8(x) = 1$, change of basis formula. 
+\item $\ln (x^2) = (\ln x)^2$
+\end{enumerate}
+\item Application problem (la crosse population, radiactive decay)
+\end{enumerate}
+
+\end{document}
